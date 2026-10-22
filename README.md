@@ -152,6 +152,18 @@ node scripts/deploy.cjs "生成目录" --repo my-portfolio \
 
 ---
 
+## 相关
+
+- **完整桌面程序版**：[`ai-web-deploy-workflow`](https://github.com/disagion06/ai-web-deploy-workflow)
+  —— 如果你想要一个带界面的 Electron 应用、并且希望**由程序自己调模型生成网页**（需要配 API key），
+  用那个仓库。它自带图形界面、本地预览、`npm run check / smoke / test:llm` 三套验证。
+  在线说明页：<https://disagion06.github.io/ai-web-deploy-workflow/>
+
+两者的关系：**同一套脱敏与上线内核**。区别只在"谁写 HTML"——
+本 skill 让宿主 AI 写，那个仓库让程序调模型写。
+
+---
+
 ## 许可
 
 MIT
