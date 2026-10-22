@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>张示例 · 后端工程师</title>
+<meta name="description" content="后端工程师，三年经验，专注高并发与数据一致性。">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #000000;
+    --accent: #e30613;
+    --muted: #767676;
+    --gap: 8px;
+    --max: 900px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+  }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); }
+  a:hover { color: var(--accent); }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 calc(var(--gap) * 3); }
+
+  /* ---- 首屏 ---- */
+  .hero { padding: calc(var(--gap) * 10) 0 calc(var(--gap) * 8); border-bottom: 2px solid var(--ink); }
+  .hero-kicker {
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin-bottom: calc(var(--gap) * 3);
+  }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .hero h1 { font-size: clamp(36px, 8vw, 72px); line-height: 1.05; letter-spacing: -.03em; margin: 0 0 calc(var(--gap) * 3); font-weight: 700; }
+  .hero-lede { font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); max-width: 34em; margin: 0 0 calc(var(--gap) * 4); }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: calc(var(--gap) * 3); font-size: 14px; }
+
+  /* ---- 区块 ---- */
+  section { padding: calc(var(--gap) * 8) 0; border-bottom: 1px solid #e5e5e5; }
+  section:last-of-type { border-bottom: 0; }
+  .sec-head { display: flex; align-items: baseline; gap: calc(var(--gap) * 2); margin-bottom: calc(var(--gap) * 4); }
+  .sec-num { font-size: 12px; letter-spacing: .16em; color: var(--accent); font-variant-numeric: tabular-nums; }
+  h2 { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0; font-weight: 600; }
+  p { margin: 0 0 calc(var(--gap) * 2); }
+  .about p { max-width: 40em; }
+
+  /* ---- 作品 ---- */
+  .works { display: grid; gap: 0; }
+  .work {
+    display: grid;
+    grid-template-columns: calc(var(--gap) * 12) 1fr;
+    gap: calc(var(--gap) * 3);
+    padding: calc(var(--gap) * 3) 0;
+    border-top: 1px solid #e5e5e5;
+    align-items: start;
+  }
+  .work:first-child { border-top: 0; }
+  .work-idx { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 4px; }
+  .work h3 { font-size: 18px; margin: 0 0 calc(var(--gap) * 1); line-height: 1.35; }
+  .work-role { font-size: 13px; color: var(--muted); margin: 0 0 calc(var(--gap) * 1.5); }
+  .work-desc { font-size: 14px; margin: 0 0 calc(var(--gap) * 1.5); }
+  .work-stack { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  /* ---- 技能 ---- */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: calc(var(--gap) * 4); }
+  .skills h3 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 calc(var(--gap) * 1.5); }
+  .skills ul { margin: 0; padding: 0; list-style: none; font-size: 14px; }
+  .skills li { padding: calc(var(--gap) * 0.75) 0; border-top: 1px solid #e5e5e5; }
+  .skills li:first-child { border-top: 0; }
+
+  /* ---- 联系 ---- */
+  .contact-lines { display: grid; gap: calc(var(--gap) * 2); font-size: 15px; }
+  .contact-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 2px; }
+
+  footer { padding: calc(var(--gap) * 6) 0 calc(var(--gap) * 10); font-size: 12px; color: var(--muted); }
+
+  /* ---- 动效：只在支持 JS 且未要求减少动效时启用 ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal { opacity: 0; transform: translateY(10px); }
+    .js .reveal.in { animation: rise .55s cubic-bezier(.2,.7,.3,1) both; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+
+  @media (max-width: 560px) {
+    .work { grid-template-columns: calc(var(--gap) * 8) 1fr; gap: calc(var(--gap) * 2); }
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <header class="hero">
+    <div class="hero-kicker">Backend Engineer · 3 yrs</div>
+    <h1>张示例</h1>
+    <p class="sr-only">张示例，后端工程师的个人主页</p>
+    <p class="hero-lede">
+      做后端三年，主要在高并发读写和数据一致性上。喜欢把复杂链路拆到能一眼看懂，
+      也愿意为一次慢查询翻三天日志。
+    </p>
+    <div class="hero-meta">
+      <span><a href="mailto:demo@example.com">demo@example.com</a></span>
+      <span><a href="https://github.com/example">github.com/example</a></span>
+    </div>
+  </header>
+
+  <section class="about reveal">
+    <div class="sec-head"><span class="sec-num">01</span><h2>关于</h2></div>
+    <p>三年后端开发，主要负责交易与订单链路。日常和 MySQL、Redis、消息队列打交道。</p>
+    <p>习惯先写清楚边界条件和失败路径再动手；线上问题优先看监控和日志，不靠猜。</p>
+  </section>
+
+  <section class="works reveal">
+    <div class="sec-head"><span class="sec-num">02</span><h2>项目</h2></div>
+    <div class="works">
+
+      <article class="work">
+        <div class="work-idx">01</div>
+        <div>
+          <h3>订单系统拆分</h3>
+          <p class="work-role">主力开发 · 4 人</p>
+          <p class="work-desc">把单体里的订单模块拆成独立服务，用幂等键解决重复下单，灰度期间零资损。</p>
+          <p class="work-stack">Java · Spring Boot · MySQL · RocketMQ</p>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="work-idx">02</div>
+        <div>
+          <h3>热点商品缓存</h3>
+          <p class="work-role">独立负责</p>
+          <p class="work-desc">针对秒杀热点做多级缓存与本地合并，把峰值时的数据库 QPS 压下来一个量级。</p>
+          <p class="work-stack">Redis · Caffeine · Lua</p>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="work-idx">03</div>
+        <div>
+          <h3>对账任务重构</h3>
+          <p class="work-role">独立负责</p>
+          <p class="work-desc">原任务跑 6 小时且经常超时；改成按分片并行 + 断点续跑后压缩到 20 分钟内。</p>
+          <p class="work-stack">Java · MyBatis · 定时调度</p>
+        </div>
+      </article>
+
+      <article class="work">
+        <div class="work-idx">04</div>
+        <div>
+          <h3>接口耗时治理</h3>
+          <p class="work-role">跨组协作</p>
+          <p class="work-desc">梳理出 12 个 P99 超 1s 的接口，逐个定位到 N+1 查询与串行调用，全部降到 200ms 以内。</p>
+          <p class="work-stack">Arthas · 链路追踪 · SQL 优化</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="skills reveal">
+    <div class="sec-head"><span class="sec-num">03</span><h2>技术栈</h2></div>
+    <div class="skills">
+      <div>
+        <h3>语言</h3>
+        <ul><li>Java</li><li>SQL</li><li>Shell</li></ul>
+      </div>
+      <div>
+        <h3>存储</h3>
+        <ul><li>MySQL</li><li>Redis</li><li>Elasticsearch</li></ul>
+      </div>
+      <div>
+        <h3>中间件</h3>
+        <ul><li>RocketMQ</li><li>Kafka</li><li>Nginx</li></ul>
+      </div>
+      <div>
+        <h3>工程</h3>
+        <ul><li>Git · CI/CD</li><li>Docker</li><li>Linux 排查</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact reveal">
+    <div class="sec-head"><span class="sec-num">04</span><h2>联系</h2></div>
+    <div class="contact-lines">
+      <div><span class="contact-k">Email</span><a href="mailto:demo@example.com">demo@example.com</a></div>
+      <div><span class="contact-k">GitHub</span><a href="https://github.com/example">github.com/example</a></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>张示例 · 后端工程师</div>
+  </footer>
+
+</main>
+
+<script>
+  // 只在 JS 可用时才启用进场动效：先加 .js 标记，再交给 IntersectionObserver。
+  // 这样 JS 失败或用户禁用 JS 时，内容默认就是可见的。
+  document.documentElement.classList.add('js');
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
