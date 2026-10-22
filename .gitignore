@@ -1,0 +1,13 @@
+# 依赖
+node_modules/
+
+# 运行时产物
+.selfcheck/
+shots/
+*.log
+*-脱敏报告.md
+assets-manifest.json
+
+# 系统
+Thumbs.db
+.DS_Store
